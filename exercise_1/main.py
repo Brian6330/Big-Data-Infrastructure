@@ -13,6 +13,8 @@ def populate_db():
           VALUES (2, 'Paper_title_2', 'lorem ipsum 2')")
     cur.execute("INSERT INTO paper (paperID,title,abstract) \
           VALUES (3, 'Paper_title_3', 'lorem ipsum 3')")
+    cur.execute("INSERT INTO paper (paperID,title,abstract) \
+          VALUES (4, 'Paper_title_4', 'lorem ipsum 4')")
 
     cur.execute("INSERT INTO author (authorID,name,email,affiliation) \
           VALUES (1, 'Alex', 'alex@a.ch', 'uniNe')")
@@ -34,6 +36,10 @@ def populate_db():
           VALUES (2, 1)")
     cur.execute("INSERT INTO writes (authorID, paperID) \
           VALUES (3, 3)")
+    cur.execute("INSERT INTO writes (authorID, paperID) \
+          VALUES (3, 4)")
+    cur.execute("INSERT INTO writes (authorID, paperID) \
+          VALUES (1, 4)")
 
     cur.execute("INSERT INTO submits (paperID, confID, isAccepted, date) \
           VALUES (1, 1, true, '2022-03-24')")
@@ -41,13 +47,17 @@ def populate_db():
           VALUES (2, 2, true, '2022-04-24')")
     cur.execute("INSERT INTO submits (paperID, confID, isAccepted, date) \
           VALUES (3, 3, false, '2022-05-24')")
+    cur.execute("INSERT INTO submits (paperID, confID, isAccepted, date) \
+          VALUES (4, 3, true, '2022-06-24')")
 
-    cur.execute("INSERT INTO cities (paperIDfrom, paperIDto) \
+    cur.execute("INSERT INTO cites (paperIDfrom, paperIDto) \
           VALUES (1, 2)")
-    cur.execute("INSERT INTO cities (paperIDfrom, paperIDto) \
+    cur.execute("INSERT INTO cites (paperIDfrom, paperIDto) \
           VALUES (2, 1)")
-    cur.execute("INSERT INTO cities (paperIDfrom, paperIDto) \
-          VALUES (3, 3)")
+    cur.execute("INSERT INTO cites (paperIDfrom, paperIDto) \
+          VALUES (3, 4)")
+    cur.execute("INSERT INTO cites (paperIDfrom, paperIDto) \
+          VALUES (4, 3)")
 
     conn.commit()
     print("Records created successfully")
